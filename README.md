@@ -1,5 +1,6 @@
-# test_gitpod
-A repo created to illustrate an easy way to run nextflow+docker pipelines
+# scRNAmazed
+The goal of this pipeline is to allow biologist to easily analyze their scRNAseq data
+# How to Run this:
 ## The easy way
 1. go to gitpod.io
 2. in the *new workspace* field, paste `https://github.com/mage561/test_gitpod`
@@ -14,4 +15,4 @@ A repo created to illustrate an easy way to run nextflow+docker pipelines
 4. Clone the following repository: `https://github.com/mage561/test_gitpod`
 5. run `nextflow run main.nf -with-docker test_image` from the wsl subsystem
 ### On Linux
-    Idk, I work on windows, will add this if I have time
+Idk, I work on windows, will add this if I have time
