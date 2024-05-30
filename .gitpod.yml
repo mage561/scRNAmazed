@@ -3,7 +3,7 @@ tasks:
       init: |
             curl -s https://get.nextflow.io | bash
             chmod +x nextflow
-            sudo mv /workspace/test_gitpod/nextflow /usr/local/bin
+            sudo mv /workspace/scRNAmazed/nextflow /usr/local/bin
             nextflow info
             clear
       command: exit
