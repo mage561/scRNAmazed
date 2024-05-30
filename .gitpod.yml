@@ -1,0 +1,19 @@
+tasks:
+    - name: Nextflow Install
+      init: |
+            curl -s https://get.nextflow.io | bash
+            chmod +x nextflow
+            sudo mv /workspace/test_gitpod/nextflow /usr/local/bin
+            nextflow info
+            clear
+      command: exit
+    - name: Docker Image Build
+      init: |
+            docker build -t test_image .
+            clear
+      command: exit
+    - name: Main Terminal
+      init: |
+            clear
+            echo "Here are the instructions"
+            echo "But they are none for now (*＞ω＜*)♡"
