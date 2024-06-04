@@ -1,2 +1,4 @@
 .nextflow*
 work/*
+script_files/*
+data/*

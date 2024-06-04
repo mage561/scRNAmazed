@@ -1,6 +1,10 @@
 #!/usr/bin/env nextflow
 
-include { sayBye as bye; preprocessing as preproc } from './nextflow_scripts/preprocessing.nf'
+nextflow.enable.dsl=2
+
+include { preprocessing } from './nextflow_scripts/preprocessing.nf'
+
+params.datapath = "$PWD/data/"
 
 process cowSaysHi {
     output:
@@ -8,16 +12,11 @@ process cowSaysHi {
 
     script:
     """
-    cowsay Hi
+    cowsay `The End.`
     """
 }
 
-workflow preprocessing {
-    preproc()
-    bye | view
-}
-
 workflow{
-    preprocessing()
-    cowSaysHi() | view
+    preprocessing(params.datapath)
+    //cowSaysHi() | view
 }

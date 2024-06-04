@@ -1,23 +1,19 @@
-process sayHi {
+process getSampleNames {
+    input:
+    path samplenames
+
     output:
     stdout
 
-    script:
     """
-    echo Hi 
-    """
-}
-
-process sayBye {
-    output:
-    stdout
-
-    script:
-    """
-    echo Bye 
+    realpath $samplenames/*
     """
 }
 
-workflow preprocessing{
-    sayHi | view
+workflow preprocessing {
+    take:
+    data1
+
+    main:
+    getSampleNames(data1) | view
 }
