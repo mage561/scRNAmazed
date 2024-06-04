@@ -17,3 +17,5 @@ tasks:
             clear
             echo "Here are the instructions"
             echo "But they are none for now (*＞ω＜*)♡"
+            echo "You can copy-paste this tho"
+            echo "nextflow run main.nf -with-docker test_image"

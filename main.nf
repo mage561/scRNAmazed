@@ -1,3 +1,7 @@
+#!/usr/bin/env nextflow
+
+include { sayBye as bye; preprocessing as preproc } from './nextflow_scripts/preprocessing.nf'
+
 process cowSaysHi {
     output:
     stdout
@@ -8,17 +12,12 @@ process cowSaysHi {
     """
 }
 
-process sayHi {
-    output:
-    stdout
-
-    script:
-    """
-    echo Hi 
-    """
+workflow preprocessing {
+    preproc()
+    bye | view
 }
 
 workflow{
-    sayHi() | view
+    preprocessing()
     cowSaysHi() | view
 }
