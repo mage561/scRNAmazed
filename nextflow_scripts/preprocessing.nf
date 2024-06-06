@@ -1,19 +1,20 @@
-process getSampleNames {
+process getSamplePathes {
     input:
-    path samplenames
+    path samplerepo
 
     output:
     stdout
 
     """
-    realpath $samplenames/*
+    realpath $samplerepo/*
     """
 }
+
 
 workflow preprocessing {
     take:
     data1
 
     main:
-    getSampleNames(data1) | view
+    getSamplePathes(data1) | view
 }

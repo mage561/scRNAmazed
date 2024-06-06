@@ -7,15 +7,10 @@ tasks:
             nextflow info
             clear
       command: exit
-    - name: Docker Image Build
-      init: |
-            docker build -t test_image .
-            clear
-      command: exit
     - name: Main Terminal
       init: |
             clear
             echo "Here are the instructions"
             echo "But they are none for now (*＞ω＜*)♡"
             echo "You can copy-paste this tho"
-            echo "nextflow run main.nf -with-docker test_image"
+            echo "nextflow run main.nf"
