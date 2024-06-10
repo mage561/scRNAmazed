@@ -5,8 +5,7 @@ nextflow.enable.dsl=2
 include { preprocessing } from './nextflow_scripts/preprocessing.nf'
 
 params.datapath = "$PWD/data/"
-params.execpath = "$PWD/exec_files"
-params.test= "$PWD/my_script.R"
+params.execpath = "$PWD/exec_files/"
 
 process cowSaysHi {
     output:
@@ -26,13 +25,30 @@ process test {
 
     script:
     """
-    #!/usr/bin/env python3
-    import numpy
-    print(numpy.cos(0))
+    echo $params.datapath
     """
 }
+
+process test2 {
+    conda 'CONDA_ENVS/r_env.yml'
+
+    output:
+    stdout
+
+    script:
+    """
+    #!/usr/bin/env Rscript
+    library(Seurat)
+    library(sceasy)
+    print("Hellowwww")
+    """
+}
+
+
 workflow{
-    //preprocessing(params.datapath)
+    preprocessing(params.datapath)
     //cowSaysHi() | view
-    test | view
+    //test | view
+    //numbers = randomNum()
+    
 }

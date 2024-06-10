@@ -1,0 +1,11 @@
+name: r_env
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - r-base=4.3.3
+  - r-essentials
+  - r-seurat=4.4.0
+  - r-seuratobject=5.0.2
+  - r-sceasy=0.0.7
