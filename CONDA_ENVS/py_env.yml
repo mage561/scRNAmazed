@@ -1,0 +1,9 @@
+name: py_env
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.7.16
+  - scanpy=1.9.3
+  - matplotlib=3.5.3
+  - pickle5=0.0.11

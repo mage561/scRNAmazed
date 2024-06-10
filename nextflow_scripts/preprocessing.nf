@@ -10,7 +10,19 @@ process getSamplePathes {
     """
 }
 
-process getSample5Head{
+process getSampleNames {
+    input:
+    path samplerepo
+
+    output:
+    path "sample_names.txt"
+
+    """
+    ls $samplerepo > sample_names.txt
+    """
+}
+
+process getSample5Head {
     conda 'CONDA_ENVS/r_env.yml'
 
     input:
@@ -24,10 +36,26 @@ process getSample5Head{
     """
 }
 
-workflow preprocessing {
+process filterLowQualityCells {
+    conda 'CONDA_ENVS/py_env.yml'
+
+    output:
+    stdout
+
+    """
+    #!/usr/bin/env python3
+    import pickle5
+    print("hellow")
+    """
+
+}
+
+workflow quality_control {
     take:
     data1
 
     main:
-    getSamplePathes(data1) | getSample5Head | view
+    names = getSampleNames
+    //getSamplePathes(data1) | getSample5Head | view
+    filterLowQualityCells | view
 }
