@@ -44,21 +44,21 @@ process filterLowQualityCells {
     path h5ad_files
 
     output:
-    stdout
-
+    path "*.h5ad"
+    
     """
-    python3 $params.py_script/qc_filter_low_q.py "$sample_names" "$h5ad_files"
+    python3 $params.py_script/qc_filter_low_q.py "$sample_names" "$h5ad_files" "$params.specie" "$params.outdir"
     """
-
 }
 
 workflow quality_control {
     take:
-    data1
+    filtered_data
+    raw_data
 
     main:
-    names = getSampleNames(data1)
-    h5ad = getSamplePathes(data1) | getSample5Head
-    filterLowQualityCells(names, h5ad) | view
+    names = getSampleNames(filtered_data)
+    h5ad1 = getSamplePathes(filtered_data) | getSample5Head
+    h5ad2 = filterLowQualityCells(names, h5ad1)
     
 }

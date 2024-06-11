@@ -9,3 +9,4 @@ dependencies:
   - r-seurat=4.4.0
   - r-seuratobject=5.0.2
   - r-sceasy=0.0.7
+  - r-soupx=1.6.2

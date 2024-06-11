@@ -16,3 +16,7 @@ The goal of this pipeline is to allow biologist to easily analyze and plot their
 6. run `nextflow run main.nf` from the wsl subsystem
 ### On Linux
 Idk, I work on windows, will add this if I have time
+
+##Input Data:
+A directory for each sample containing the matrix.mtx, genes.tsv (or features.tsv), and barcodes.tsv (all .gz) files provided by 10X (filteredCountTable Directory, \[non-corrected?\])
+According to the article i'm following, you better use the filtered_count_table+poisson-corrected as input, tho we will need the unfiltered non-poisson later
