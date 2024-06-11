@@ -47,7 +47,7 @@ process filterLowQualityCells {
     path "*.h5ad"
     
     """
-    python3 $params.py_script/qc_filter_low_q.py "$sample_names" "$h5ad_files" "$params.specie" "$params.outdir"
+    python3 $params.py_script/qc_filter_low_q.py "$sample_names" "$h5ad_files" $params.specie $params.outdir $params.MAD $params.mt_percent 
     """
 }
 

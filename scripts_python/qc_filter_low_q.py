@@ -16,7 +16,11 @@ file_sample_names = open(sys.argv[1], "r")
 sample_names = file_sample_names.read().splitlines()
 sample_h5ad = (sys.argv[2]).split()
 specie=sys.argv[3]
+mad_treshold=int(sys.argv[5])
+mt_pc_treshold=int(sys.argv[6])
+
 list_matrices_QC = []
+
 
 for i in range(0,len(sample_names)):
     list_matrices_QC.append(sc.read_h5ad((sample_h5ad[i])))
@@ -34,21 +38,17 @@ for i in range(0,len(sample_names)):
     plt.savefig(os.path.join(output_dir, f"{sample_names[i]}_PRE_MAD.png"))
     plt.close()
 
-for i in range(0, len(list_matrices_QC)):
-    list_matrices_QC[i].obs["outlier"] = (
-        is_outlier(list_matrices_QC[i], "log1p_total_counts", 5) 
-        | is_outlier(list_matrices_QC[i], "log1p_n_genes_by_counts", 5) 
-        | is_outlier(list_matrices_QC[i], "pct_counts_mt", 3) 
-        | (list_matrices_QC[i].obs["pct_counts_mt"] > 10)
+for i in range(0, len(list_matrices_QC)):#Similar to [Germain et al., 2020], we mark cells as outliers if they differ by 5 MADs (relatively permissive filtering)
+    list_matrices_QC[i].obs["outlier_low_q_cell"] = (
+        is_outlier(list_matrices_QC[i], "log1p_total_counts", mad_treshold) 
+        | is_outlier(list_matrices_QC[i], "log1p_n_genes_by_counts", mad_treshold) 
+        | is_outlier(list_matrices_QC[i], "pct_counts_mt", mad_treshold) 
+        | (list_matrices_QC[i].obs["pct_counts_mt"] > mt_pc_treshold)
         )
-    raw_matrices = list_matrices_QC
-    list_matrices_QC[i] = list_matrices_QC[i][(~list_matrices_QC[i].obs.outlier)]
 
 for i in range(0,len(sample_names)):
-    p=sc.pl.violin(list_matrices_QC[i],keys=["log1p_total_counts", "log1p_n_genes_by_counts", "pct_counts_mt"], show=False)
+    p=sc.pl.violin(list_matrices_QC[i][(~list_matrices_QC[i].obs.outlier_low_q_cell)],keys=["log1p_total_counts", "log1p_n_genes_by_counts", "pct_counts_mt"], show=False)
     p.set_title(sample_names[i]+"_POST_MAD")
     plt.savefig(os.path.join(output_dir, f"{sample_names[i]}_POST_MAD.png"))
     plt.close()
-
-for i in range(0,len(sample_names)):
     list_matrices_QC[i].write_h5ad("./"+sample_names[i]+"_1.h5ad")
