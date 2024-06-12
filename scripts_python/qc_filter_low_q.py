@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
-import matplotlib
-import scanpy as sc
-import numpy as np
+import matplotlib # type: ignore
+import scanpy as sc # type: ignore
+import numpy as np # type: ignore
 import os
 import sys
 
 matplotlib.use('Agg')
-from matplotlib import pyplot as plt
-from scipy.stats import median_abs_deviation
+from matplotlib import pyplot as plt # type: ignore
+from scipy.stats import median_abs_deviation # type: ignore
 
 output_dir = sys.argv[4]+"/quality_control/"
 os.makedirs(output_dir, exist_ok=True)
@@ -21,16 +21,15 @@ mt_pc_treshold=int(sys.argv[6])
 
 list_matrices_QC = []
 
+def is_outlier(data, metric: str, nmads: int):#automatic thresholding via MAD (median absolute deviation)
+    M = data.obs[metric]
+    outlier = (M < np.median(M) - nmads * median_abs_deviation(M)) | (np.median(M) + nmads * median_abs_deviation(M) < M)
+    return outlier
 
 for i in range(0,len(sample_names)):
     list_matrices_QC.append(sc.read_h5ad((sample_h5ad[i])))
     list_matrices_QC[i].var[specie] = list_matrices_QC[i].var_names.str.startswith(specie+"-")
     sc.pp.calculate_qc_metrics(list_matrices_QC[i], qc_vars=[specie], inplace=True, percent_top=[], log1p=True)
-
-def is_outlier(data, metric: str, nmads: int):#automatic thresholding via MAD (median absolute deviation)
-    M = data.obs[metric]
-    outlier = (M < np.median(M) - nmads * median_abs_deviation(M)) | (np.median(M) + nmads * median_abs_deviation(M) < M)
-    return outlier
 
 for i in range(0,len(sample_names)):
     p=sc.pl.violin(list_matrices_QC[i],keys=["log1p_total_counts", "log1p_n_genes_by_counts", "pct_counts_mt"], show=False)
