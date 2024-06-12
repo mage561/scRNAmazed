@@ -9,3 +9,4 @@ dependencies:
   - pickle5=0.0.11
   - scipy=1.7.3
   - leidenalg=0.9.0
+  - pickle5=0.0.11
