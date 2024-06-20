@@ -7,9 +7,13 @@ raw_pathes <- readLines(args[1])
 filtered_pathes <- readLines(args[2])
 sample_names <- readLines(args[3])
 
+print(raw_pathes)
+print(filtered_pathes)
+print(sample_names)
+
 for (i in 1:length(sample_names)) { # nolint
-    counts <- Seurat::Read10X(paste0(filtered_pathes, "/", sample_names[[i]])) # nolint
-    counts.raw <- Seurat::Read10X(paste0(raw_pathes, "/", sample_names[[i]]))# nolint
+    counts <- Seurat::Read10X(paste0(filtered_pathes, '/', sample_names[[i]])) # nolint
+    counts.raw <- Seurat::Read10X(paste0(raw_pathes, '/', sample_names[[i]]))# nolint
     sce <- SingleCellExperiment::SingleCellExperiment(list(counts = counts))
     sce.raw <- SingleCellExperiment::SingleCellExperiment(list(counts = counts.raw))# nolint
     sce <- decontX::decontX(sce, background = sce.raw)

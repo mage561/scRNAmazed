@@ -42,12 +42,42 @@ process doublet_detection{
 
     output:
     path "*.h5ad"
-
+    
     """
-    Rscript $params.r_script/doublet_detection.r "$h5ad_files"
+    Rscript $params.r_script/doublet_detection.r "$h5ad_files" 
     """
 }
 
+process ercc_removal{
+    conda 'CONDA_ENVS/py_env.yml'
+
+    input:
+    path sample_names
+    path h5ad_files
+
+    output:
+    path "*.h5ad"
+
+    script:
+    """
+    python3 $params.py_script/ercc_filtering.py "$h5ad_files" "$sample_names" $params.ercc_percent 
+    """
+}
+
+process concatenate_samples_and_2_percent  {
+    conda 'CONDA_ENVS/py_env.yml'
+
+    input:
+    path h5ad_files
+
+    output:
+    path "quality_control.h5ad"
+
+    script:
+    """
+    python3 $params.py_script/concat_and_2_percent.py "$h5ad_files"
+    """
+}
 workflow quality_control {
     take:
     filtered_data
@@ -58,6 +88,7 @@ workflow quality_control {
     
     h5ad1 = ambiantRnaRemoval(getRawPathes(raw_data, channel.value("raw")), getFilteredPathes(filtered_data, channel.value("filtered")), names)
     h5ad2 = filterLowQualityCells(names, h5ad1)
-
-    doublet_detection(h5ad2) | view
+    h5ad3 = doublet_detection(h5ad2)
+    h5ad4 = ercc_removal(names, h5ad3)
+    concatenate_samples_and_2_percent(h5ad4) | view
 }
