@@ -5,9 +5,15 @@ channels:
   - defaults
 dependencies:
   - r-base=4.3.3
-  - r-essentials
+  - r-essentials=4.3
   - r-seurat=4.4.0
   - r-seuratobject=5.0.2
   - r-sceasy=0.0.7
-  - r-soupx=1.6.2
   - r-reticulate=1.37.0
+  - bioconductor-singlecellexperiment
+  - bioconductor-decontx
+  - bioconductor-celda
+  - bioconductor-zellkonverter
+  - pip
+  - pip:
+    - numpy==1.26.4

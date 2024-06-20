@@ -1,12 +1,13 @@
 process getPathes {
     input:
     path samplerepo
+    val suffix
 
     output:
-    path "sample_paths.txt"
+    path '*.txt'
 
     """
-    realpath $samplerepo/* > sample_paths.txt
+    realpath $samplerepo* > sample_paths_${suffix}.txt
     """
 }
 
@@ -23,15 +24,13 @@ process getNames {
 }
 
 process get5Head {
-    conda 'CONDA_ENVS/r_env.yml'
-
     input:
     path samplePaths
     val type
 
     output:
     path "*.h5ad"
-
+    
     """
     Rscript $params.r_script/countmatrix_to_anndata.r $samplePaths $type
     """

@@ -15,42 +15,21 @@ process filterLowQualityCells {
     """
 }
 
-process correctAmbiantARN_begin {
-    conda 'CONDA_ENVS/py_env.yml'
+process ambiantRnaRemoval {
+    //conda 'CONDA_ENVS/r_env.yml'
+    conda '/root/miniconda3/envs/r_env'
 
     input:
-    path sample_names
-    path h5ad_files
-    path raw_h5ad
+    path raw_data
+    path filtered_data
+    path names
 
     output:
-    path "*.pkl"
+    path '*.h5ad'
 
     script:
     """
-    python3 $params.py_script/qc_filter_ambiant_arn_prep.py "$sample_names" "$h5ad_files" "$raw_h5ad"
-    """
-}
-
-process correctAmbiantARN_end {
-    input:
-    path sample_names
-    path h5ad_files
-    path soupx_files
-
-    output:
-    stdout
-
-    script:
-    """
-    #!/usr/bin/env Rscript
-    filenames = unlist(strsplit("$soupx_files", ' '))
-
-    #cells = reticulate::py_load_object(filenames[1])
-    #data = reticulate::py_load_object(filenames[2])
-    #data_tod = reticulate::py_load_object(filenames[3])
-    #genes = reticulate::py_load_object(filenames[4])
-    #soupx_groups = reticulate::py_load_object(filenames[5])
+    Rscript $params.r_script/ambiant_rna_filtering.r "$raw_data" "$filtered_data" "$names"
     """
 }
 
@@ -61,11 +40,8 @@ workflow quality_control {
 
     main:
     names = getNames(filtered_data)
-    h5ad_raw = getRaw5Head(getRawPathes(raw_data), channel.value("raw"))
-
-    h5ad1 = getFiltered5Head(getFilteredPathes(filtered_data), channel.value("filtered"))
+    
+    h5ad1 = ambiantRnaRemoval(getRawPathes(raw_data, channel.value("raw")), getFilteredPathes(filtered_data, channel.value("filtered")), names)
     h5ad2 = filterLowQualityCells(names, h5ad1)
     
-    soupx_files = correctAmbiantARN_begin(names, h5ad2, h5ad_raw)   
-    correctAmbiantARN_end(names, h5ad2, soupx_files) | view
 }
