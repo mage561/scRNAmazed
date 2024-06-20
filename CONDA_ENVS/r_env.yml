@@ -10,10 +10,12 @@ dependencies:
   - r-seuratobject=5.0.2
   - r-sceasy=0.0.7
   - r-reticulate=1.37.0
+  - r-anndata
   - bioconductor-singlecellexperiment
   - bioconductor-decontx
   - bioconductor-celda
   - bioconductor-zellkonverter
+  - bioconductor-scdblfinder
   - pip
   - pip:
     - numpy==1.26.4
