@@ -16,6 +16,7 @@ tasks:
             ~/miniconda3/bin/conda init bash
             ~/miniconda3/bin/conda init zsh
       init: |
+            exec bash
             conda env create -f CONDA_ENVS/r_env.yml
             conda env create -f CONDA_ENVS/py_env.yml
             export CONDA_ENVS_PATH="`conda info --base`/envs"
