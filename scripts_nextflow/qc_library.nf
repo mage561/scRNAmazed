@@ -38,8 +38,7 @@ process get5Head {
 
 
 process ambiantRnaRemoval {
-    //conda 'CONDA_ENVS/r_env.yml'
-    conda '/root/miniconda3/envs/r_env'
+    conda "$params.conda_envs/r_env"
 
     input:
     path raw_data
@@ -56,7 +55,7 @@ process ambiantRnaRemoval {
 }
 
 process filterLowQualityCells {
-    conda 'CONDA_ENVS/py_env.yml'
+    conda "$params.conda_envs/py_env"
 
     input:
     path sample_names
@@ -71,8 +70,7 @@ process filterLowQualityCells {
 }
 
 process doublet_detection{
-    //conda 'CONDA_ENVS/r_env.yml'
-    conda '/root/miniconda3/envs/r_env'
+    conda "$params.conda_envs/r_env"
 
     input:
     path h5ad_files
@@ -86,7 +84,7 @@ process doublet_detection{
 }
 
 process ercc_removal{
-    conda 'CONDA_ENVS/py_env.yml'
+    conda "$params.conda_envs/py_env"
 
     input:
     path sample_names
@@ -102,7 +100,7 @@ process ercc_removal{
 }
 
 process concatenate_samples_and_2_percent  {
-    conda 'CONDA_ENVS/py_env.yml'
+    conda "$params.conda_envs/py_env"
 
     input:
     path h5ad_files

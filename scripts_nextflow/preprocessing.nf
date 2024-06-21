@@ -1,7 +1,7 @@
 include { getNames; getPathes as getRawPathes; getPathes as getFilteredPathes; ambiantRnaRemoval; filterLowQualityCells; doublet_detection; ercc_removal; concatenate_samples_and_2_percent} from "$params.nf_script/qc_library.nf"
 
 process normalization {
-    conda 'CONDA_ENVS/py_env.yml'
+    conda "$params.conda_envs/py_env"
 
     input:
     path h5ad_file
@@ -16,7 +16,7 @@ process normalization {
 }
 
 process feature_selection_step1 {
-    conda '/root/miniconda3/envs/r_env'
+    conda "$params.conda_envs/r_env"
 
     input:
     path h5ad_file
@@ -31,7 +31,7 @@ process feature_selection_step1 {
 }
 
 process feature_selection_step2 {
-    conda 'CONDA_ENVS/py_env.yml'
+    conda "$params.conda_envs/py_env"
 
     input:
     path h5ad_file
@@ -46,7 +46,7 @@ process feature_selection_step2 {
 }
 
 process dimensionality_reduction {
-    conda 'CONDA_ENVS/py_env.yml'
+    conda "$params.conda_envs/py_env"
 
     input:
     path h5ad_file

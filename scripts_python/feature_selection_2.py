@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
-import scanpy
-import numpy
+import scanpy # type: ignore
+import numpy # type: ignore
 import sys
 
 file_name = sys.argv[1]
