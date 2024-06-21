@@ -50,4 +50,4 @@ for i in range(0,len(sample_names)):
     p.set_title(sample_names[i]+"_POST_MAD")
     plt.savefig(os.path.join(output_dir, f"{sample_names[i]}_POST_MAD.png"))
     plt.close()
-    list_matrices_QC[i].write_h5ad("./"+sample_names[i]+"_1.h5ad")
+    list_matrices_QC[i].write_h5ad("./filtered_"+sample_names[i]+".h5ad")
