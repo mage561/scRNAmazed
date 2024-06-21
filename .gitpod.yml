@@ -7,7 +7,7 @@ tasks:
             nextflow info
             clear
       command: exit
-    - name: Conda install
+    - name: Conda Install
       init: |
             mkdir -p ~/miniconda3
             wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh
@@ -16,23 +16,16 @@ tasks:
             ~/miniconda3/bin/conda init bash
             ~/miniconda3/bin/conda init zsh
             gp sync-done conda
-      command: exit
-    - name: Conda Environment Setups
-      init: gp sync-await conda
-      command: |
-            conda env create -f CONDA_ENVS/r_env.yml
-            conda env create -f CONDA_ENVS/py_env.yml
-            export CONDA_ENVS_PATH="`conda info --base`/envs"
-            exit            
+      command: exit          
     - name: Main Terminal
       init: |
             clear
-            echo "Here are the instructions"
-            echo "But they are none for now (*＞ω＜*)♡"
-            echo "You can copy-paste this tho"
-            echo "nextflow run main.nf"
             echo "Please wait until the other terminal are done with the setup of the environment"
+            echo "Then run the following 3 lines in a new terminal"
+            echo "conda env create -f CONDA_ENVS/r_env.yml"
+            echo "conda env create -f CONDA_ENVS/py_env.yml"
+            echo 'export CONDA_ENVS_PATH="`conda info --base`/envs"'
             echo "Loading..."
             gp sync-await conda
-            echo "All done"
+            echo "All done, you can now open a new terminal and run the 3 lines"
             
