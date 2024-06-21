@@ -9,4 +9,4 @@ scanpy.tl.tsne(adata, use_rep="X_pca")
 scanpy.pp.neighbors(adata)
 scanpy.tl.umap(adata)
 
-adata.write("Dimensionality_reduction.h5ad")
+adata.write("dimensionality_reduction.h5ad")
