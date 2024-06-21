@@ -2,9 +2,11 @@
 
 nextflow.enable.dsl=2
 
-include { quality_control } from "$params.nf_script/preprocessing.nf"
+include { quality_control; normalization_selection_reduction } from "$params.nf_script/preprocessing.nf"
 
 workflow{
     //Préprocessing
-    quality_control(params.filtered_data, params.raw_data)//REMETTRE LE 2EME A raw_data
+    qc_h5ad = quality_control(params.filtered_data, params.raw_data)//REMETTRE LE 2EME A raw_data
+    preprocessing_h5ad = normalization_selection_reduction(qc_h5ad)
+
 }

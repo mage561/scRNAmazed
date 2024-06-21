@@ -16,6 +16,7 @@ dependencies:
   - bioconductor-celda
   - bioconductor-zellkonverter
   - bioconductor-scdblfinder
+  - bioconductor-scry
   - pip
   - pip:
     - numpy==1.26.4
