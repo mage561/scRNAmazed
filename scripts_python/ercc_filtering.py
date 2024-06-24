@@ -37,4 +37,4 @@ for i in range(0,len(file_names)):
     list_matrices_QC[i] = list_matrices_QC[i][:, non_ercc_mask]
     list_matrices_QC[i].write_h5ad(sample_names[i]+".h5ad")
 
-f.write("\nRemoved "+str(round(100*len(list_ercc_genes)/list_matrices_QC[1].n_vars, 2))+"% of the genes (ERCC)")
+f.write("\nRemoved "+str(round(100*len(list_ercc_genes)/list_matrices_QC[0].n_vars, 2))+"% of the genes (ERCC)")

@@ -1,6 +1,7 @@
 include { getNames; getPathes as getRawPathes; getPathes as getFilteredPathes; ambiantRnaRemoval; filterLowQualityCells; doublet_detection; ercc_removal; concatenate_outliers_2percent; normalization; feature_selection_step1; feature_selection_step2; dimensionality_reduction} from "$params.nf_script/qc_library.nf"
 
 workflow quality_control {
+    
     take:
     filtered_data
     raw_data
