@@ -23,7 +23,9 @@ for i in range(0,len(file_names)):
     list_matrices_QC[i].obs['outlier'] = list_matrices_QC[i].obs.get('outlier', False) | (list_matrices_QC[i].obs['outlier_low_q_cell'] == True)
     f.write(sample_names[i]+": "+str(round(100*list_matrices_QC[i].obs.outlier.value_counts()[False]/len(list_matrices_QC[i])))+"%\n")
 
+
 concatenated_anndata = anndata.concat(list_matrices_QC)
+concatenated_anndata = concatenated_anndata[~concatenated_anndata.obs["outlier"]] # REMOVE THE OUTLIERS
 concatenated_anndata.obs_names_make_unique()
 
 non_zero_per_column = np.count_nonzero(concatenated_anndata.X.A, axis=0)

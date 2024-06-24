@@ -24,10 +24,10 @@ workflow normalization_selection_reduction {
 
     main:
     h5ad1 = normalization(qc_h5ad)
-    //h5ad2 = feature_selection_step1(h5ad1) | feature_selection_step2
-    //h5ad3 = dimensionality_reduction(h5ad2)
-    h5ad1 | view
+    h5ad2 = feature_selection_step1(h5ad1) | feature_selection_step2
+    h5ad3 = dimensionality_reduction(h5ad2)
+    h5ad3
 
-    //emit:
-    //h5ad3
+    emit:
+    h5ad3
 }

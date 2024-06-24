@@ -8,7 +8,7 @@ filtered_pathes <- readLines(args[2])
 sample_names <- readLines(args[3])
 outdir <- args[4]
 
-subdir <- file.path(outdir, "ambiant_rna/")
+subdir <- file.path(outdir, "/quality_control/ambiant_rna/")
 if (!dir.exists(subdir)) {
   dir.create(subdir, recursive = TRUE)
 }

@@ -127,7 +127,7 @@ process normalization {
 
     script:
     """
-    python3 $params.py_script/normalization.py "$h5ad_file"
+    python3 $params.py_script/normalization.py "$h5ad_file" "$params.outdir"
     """
 }
 
@@ -157,7 +157,7 @@ process feature_selection_step2 {
 
     script:
     """
-    python3 $params.py_script/feature_selection_2.py "$h5ad_file"
+    python3 $params.py_script/feature_selection_2.py "$h5ad_file" "$params.outdir"
     """
 }
 
@@ -171,6 +171,6 @@ process dimensionality_reduction {
     path "*.h5ad"
     
     """
-    python3 $params.py_script/dimensionality_reduction.py "$h5ad_file"
+    python3 $params.py_script/dimensionality_reduction.py "$h5ad_file" "$params.outdir"
     """
 }

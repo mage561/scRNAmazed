@@ -22,9 +22,9 @@ tasks:
             clear
             echo "Please wait until the other terminal are done with the setup of the environment"
             echo "Then run the following 3 lines in a new terminal"
+            echo 'export CONDA_ENVS_PATH="`conda info --base`/envs"'
             echo "conda env create -f CONDA_ENVS/r_env.yml"
             echo "conda env create -f CONDA_ENVS/py_env.yml"
-            echo 'export CONDA_ENVS_PATH="`conda info --base`/envs"'
             echo "Loading..."
             gp sync-await conda
             echo "All done, you can now open a new terminal and run the 3 lines"
