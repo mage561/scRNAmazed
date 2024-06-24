@@ -9,8 +9,10 @@ matplotlib.use('Agg')
 from matplotlib import pyplot as plt # type: ignore
 from scipy.stats import median_abs_deviation # type: ignore
 
-output_dir = sys.argv[4]+"/quality_control/"
-os.makedirs(output_dir, exist_ok=True)
+output_dir_pre = sys.argv[4]+"/quality_control/pre_MAD/"
+output_dir_post = sys.argv[4]+"/quality_control/post_MAD/"
+os.makedirs(output_dir_pre, exist_ok=True)
+os.makedirs(output_dir_post, exist_ok=True)
 
 file_sample_names = open(sys.argv[1], "r")
 sample_names = file_sample_names.read().splitlines()
@@ -34,7 +36,7 @@ for i in range(0,len(sample_names)):
 for i in range(0,len(sample_names)):
     p=sc.pl.violin(list_matrices_QC[i],keys=["log1p_total_counts", "log1p_n_genes_by_counts", "pct_counts_mt"], show=False)
     p.set_title(sample_names[i]+"_PRE_MAD")
-    plt.savefig(os.path.join(output_dir, f"{sample_names[i]}_PRE_MAD.png"))
+    plt.savefig(os.path.join(output_dir_pre, f"{sample_names[i]}_PRE_MAD.png"))
     plt.close()
 
 for i in range(0, len(list_matrices_QC)):#Similar to [Germain et al., 2020], we mark cells as outliers if they differ by 5 MADs (relatively permissive filtering)
@@ -48,6 +50,6 @@ for i in range(0, len(list_matrices_QC)):#Similar to [Germain et al., 2020], we 
 for i in range(0,len(sample_names)):
     p=sc.pl.violin(list_matrices_QC[i][(~list_matrices_QC[i].obs.outlier_low_q_cell)],keys=["log1p_total_counts", "log1p_n_genes_by_counts", "pct_counts_mt"], show=False)
     p.set_title(sample_names[i]+"_POST_MAD")
-    plt.savefig(os.path.join(output_dir, f"{sample_names[i]}_POST_MAD.png"))
+    plt.savefig(os.path.join(output_dir_post, f"{sample_names[i]}_POST_MAD.png"))
     plt.close()
     list_matrices_QC[i].write_h5ad("./filtered_"+sample_names[i]+".h5ad")
