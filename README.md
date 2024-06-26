@@ -4,7 +4,7 @@ The goal of this pipeline is to allow biologist to easily analyze and plot their
 ## The easy way
 1. go to gitpod.io
 2. in the *new workspace* field, paste `https://github.com/mage561/test_gitpod`
-3. run `nextflow run main.nf`
+3. (wait for the setup to be done) run `nextflow run main.nf`
 
 ## The local way
 ### On windows
@@ -12,11 +12,12 @@ The goal of this pipeline is to allow biologist to easily analyze and plot their
 1. [install wsl](https://learn.microsoft.com/en-us/windows/wsl/install)
 2. [install conda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/windows.html)
 3. [install nextflow](https://www.nextflow.io/docs/latest/install.html) on your wsl subsystem
-4. Clone the following repository: `https://github.com/mage561/test_gitpod`, get in and run the following line:
+4. In WSL2, Clone the following repository: `https://github.com/mage561/test_gitpod`, get in and run the following line:
     ```shell
-    source setup.sh
+    conda env create --yes -f CONDA_ENVS/r_env.yml --prefix CONDA_ENVS/r_env/
+    conda env create --yes -f CONDA_ENVS/py_env.yml --prefix CONDA_ENVS/py_env/
     ```
-6. run `nextflow run main.nf` from the wsl subsystem
+6. run `nextflow run main.nf` from the WSL2 shell
 ### On Linux
 Idk, I work on windows, will add this if I have time
 

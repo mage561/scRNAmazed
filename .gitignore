@@ -1,6 +1,9 @@
-.nextflow*
-work/*
-script_files/*
-data/*
-output/*
-CONDA_ENVS/r_env/.condatmp/
+.**
+work*
+data*
+output*
+CONDA_ENVS/*
+
+!.gitignore
+!.gitpod.yml
+!CONDA_ENVS/*.yml

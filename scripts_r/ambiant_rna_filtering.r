@@ -21,6 +21,6 @@ for (i in 1:length(sample_names)) { # nolint
     sce <- decontX::decontX(sce, background = sce.raw)
     contam_plot <- decontX::plotDecontXContamination(sce)
     ggplot2::ggsave(filename = paste0(subdir, sample_names[[i]], "_ambiant_rna.png"), plot = contam_plot, width = 6, height = 4, dpi = 300) # nolint
-    assay(sce, "counts") <- round(decontX::decontXcounts(sce))
+    assay(sce, "counts") <- round(decontX::decontXcounts(sce), 2)
     zellkonverter::writeH5AD(sce, paste0(sample_names[[i]],'.h5ad'))# nolint
 }

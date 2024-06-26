@@ -18,6 +18,7 @@ f.write("Thus, after this quality control, we kept XX% of the cells")
 list_matrices_QC = []
 for i in range(0,len(file_names)):
     list_matrices_QC.append(sc.read_h5ad((file_names[i])))
+    list_matrices_QC[i].obs['origine'] = sample_names[i]
     list_matrices_QC[i].obs['outlier'] = list_matrices_QC[i].obs['scDblFinder_class'] == "doublet"
     list_matrices_QC[i].obs['outlier'] = list_matrices_QC[i].obs.get('outlier', False) | (list_matrices_QC[i].obs['ercc_outlier'] == True)
     list_matrices_QC[i].obs['outlier'] = list_matrices_QC[i].obs.get('outlier', False) | (list_matrices_QC[i].obs['outlier_low_q_cell'] == True)

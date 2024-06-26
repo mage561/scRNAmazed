@@ -22,7 +22,7 @@ mask[idx] = True
 
 adata.var["highly_deviant"] = mask
 adata.var["binomial_deviance"] = binomial_deviance
-scanpy.pp.highly_variable_genes(adata, layer="log1p_norm")
+scanpy.pp.highly_variable_genes(adata)
 
 ax = seaborn.scatterplot(data=adata.var, x="means", y="dispersions", hue="highly_deviant", s=5)
 ax.set_xlim(None, 1.5)
