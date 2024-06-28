@@ -46,23 +46,25 @@ process clustering {
 
     script:
     """
-    #!/usr/bin/env python3
+    python3 $params.py_script/clustering.py "$h5ad_file" "$params.outdir"
+    """
+}
 
-    import matplotlib # type: ignore
-    import scanpy
+process differential_expression {
+    conda "$params.conda_envs/py_env"
 
-    adata = scanpy.read("$h5ad_file")
-    output_dir = "$params.outdir"+"/analysis_plots/"
+    input:
+    path h5ad_file
+    val metadata
+    val nb_genes
 
-    matplotlib.use('Agg')
-    scanpy.settings.figdir = output_dir
 
-    scanpy.pp.neighbors(adata, n_pcs=30) #les 30 composante principales sont suffisante pour capturer la variabilité
-    #scanpy.tl.umap(adata)
-    scanpy.tl.leiden(adata, key_added="leiden_res0_25", resolution=0.25)
-    scanpy.tl.leiden(adata, key_added="leiden_res0_5", resolution=0.5)
-    scanpy.tl.leiden(adata, key_added="leiden_res1", resolution=1.0)
+    output:
+    //path '*.h5ad'
+    stdout
 
-    adata.write_h5ad("clustered.h5ad")
+    script:
+    """
+    python3 $params.py_script/differential_expression.py "$h5ad_file" "$metadata" "$nb_genes" "$params.outdir"
     """
 }
