@@ -10,7 +10,7 @@ matplotlib.use('Agg')
 
 file = sys.argv[1]
 metadata = str(sys.argv[2])
-output_dir = sys.argv[3]+"/analysis_plots/"
+output_dir = sys.argv[3]+"/analysis_plots/clustering/"
 
 os.makedirs(output_dir, exist_ok=True)
 scanpy.settings.figdir = output_dir
