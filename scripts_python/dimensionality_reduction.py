@@ -19,9 +19,9 @@ scanpy.pp.neighbors(adata)
 scanpy.tl.umap(adata)
 
 scanpy.settings.figdir = output_dir
-scanpy.pl.pca_scatter(adata, color="total_counts", save='_plot_total_counts.png')
-scanpy.pl.tsne(adata, color="total_counts", save='_plot_total_counts.png')
-scanpy.pl.umap(adata, color="total_counts", save='_plot_total_counts.png')
+scanpy.pl.pca_scatter(adata, color="total_counts", save='_plot_total_counts.pdf')
+scanpy.pl.tsne(adata, color="total_counts", save='_plot_total_counts.pdf')
+scanpy.pl.umap(adata, color="total_counts", save='_plot_total_counts.pdf')
 
 #retirer les informations inutiles:
 del adata.layers['decontXcounts']

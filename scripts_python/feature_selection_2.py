@@ -27,7 +27,7 @@ scanpy.pp.highly_variable_genes(adata)
 ax = seaborn.scatterplot(data=adata.var, x="means", y="dispersions", hue="highly_deviant", s=5)
 ax.set_xlim(None, 1.5)
 ax.set_ylim(None, 3)
-pyplot.savefig(os.path.join(output_dir, "Feature_Selection.png"))
+pyplot.savefig(os.path.join(output_dir, "Feature_Selection.pdf"))
 pyplot.close()
 
 

@@ -36,7 +36,7 @@ for i in range(0,len(sample_names)):
 for i in range(0,len(sample_names)):
     p=sc.pl.violin(list_matrices_QC[i],keys=["log1p_total_counts", "log1p_n_genes_by_counts", "pct_counts_mt"], show=False)
     p.set_title(sample_names[i]+"_PRE_MAD")
-    plt.savefig(os.path.join(output_dir_pre, f"{sample_names[i]}_PRE_MAD.png"))
+    plt.savefig(os.path.join(output_dir_pre, f"{sample_names[i]}_PRE_MAD.pdf"))
     plt.close()
 
 for i in range(0, len(list_matrices_QC)):#Similar to [Germain et al., 2020], we mark cells as outliers if they differ by 5 MADs (relatively permissive filtering)
@@ -50,6 +50,6 @@ for i in range(0, len(list_matrices_QC)):#Similar to [Germain et al., 2020], we 
 for i in range(0,len(sample_names)):
     p=sc.pl.violin(list_matrices_QC[i][(~list_matrices_QC[i].obs.outlier_low_q_cell)],keys=["log1p_total_counts", "log1p_n_genes_by_counts", "pct_counts_mt"], show=False)
     p.set_title(sample_names[i]+"_POST_MAD")
-    plt.savefig(os.path.join(output_dir_post, f"{sample_names[i]}_POST_MAD.png"))
+    plt.savefig(os.path.join(output_dir_post, f"{sample_names[i]}_POST_MAD.pdf"))
     plt.close()
     list_matrices_QC[i].write_h5ad("./filtered_"+sample_names[i]+".h5ad")

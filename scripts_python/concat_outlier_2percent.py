@@ -13,7 +13,7 @@ sample_names = sample_names.read().splitlines()
 output_dir = sys.argv[3]+"/quality_control/"
 os.makedirs(output_dir, exist_ok=True)
 f = open(output_dir+"total_outlier_proportion.txt", "a")
-f.write("Thus, after this quality control, we kept XX% of the cells")
+f.write("Thus, after this quality control, we kept XX% of the cells\n")
 
 list_matrices_QC = []
 for i in range(0,len(file_names)):

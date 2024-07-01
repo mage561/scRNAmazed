@@ -21,6 +21,6 @@ if isinstance(adata.obs[metadata][0], numpy.bool_):
     adata.obs[metadata] = adata.obs[metadata].astype(str).astype('category')
 
 scanpy.pp.neighbors(adata, n_pcs=30)
-scanpy.pl.pca_scatter(adata, color=metadata, save=f'_plot_{metadata}.png')
-scanpy.pl.tsne(adata, color=metadata, save=f'_plot_{metadata}.png')
-scanpy.pl.umap(adata, color=metadata, save=f'_plot_{metadata}.png')
+scanpy.pl.pca_scatter(adata, color=metadata, save=f'_plot_{metadata}.pdf')
+scanpy.pl.tsne(adata, color=metadata, save=f'_plot_{metadata}.pdf')
+scanpy.pl.umap(adata, color=metadata, save=f'_plot_{metadata}.pdf')

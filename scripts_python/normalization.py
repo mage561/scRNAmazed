@@ -22,7 +22,7 @@ p1 = seaborn.histplot(adata.obs["total_counts"], bins=100, kde=False, ax=axes[0]
 axes[0].set_title("Total counts")
 p2 = seaborn.histplot(adata.X.sum(1), bins=100, kde=False, ax=axes[1])
 axes[1].set_title("Shifted logarithm")
-pyplot.savefig(os.path.join(output_dir, "Normalisation.png"))
+pyplot.savefig(os.path.join(output_dir, "Normalisation.pdf"))
 pyplot.close()
 
 
