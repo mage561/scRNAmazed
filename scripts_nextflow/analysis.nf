@@ -69,24 +69,14 @@ process volcano_plot {
     path h5ad_file
     val metadata //needs to be String/Bool type, not a numeric value, or we'll have to do ranges
     tuple val(class1), val(class2)
+    val nb_genes
 
     output:
     stdout
 
     script:
     """
-    #!/usr/bin/env python3
-
-    import matplotlib # type: ignore
-    import scanpy # type: ignore
-    import numpy # type: ignore
-    import sys
-    import os
-
-    matplotlib.use('Agg')
-
-    file = "$h5ad_file" # sys.argv[1]
-    
+    python3 $params.py_script/volcano.py "$h5ad_file" "$metadata" "$class1" "$class2" "$nb_genes" "$params.outdir"
     """
 
 }

@@ -15,7 +15,7 @@ workflow{
     clustered_h5ad = clustering(preprocessing_h5ad)
     get_metadata(clustered_h5ad) | view
 
-    visualization(clustered_h5ad, channel.value('cluster_res1'))
-    heatmap(clustered_h5ad, channel.value('cluster_res1'), channel.value('10')) //3 = nb genes
-    volcano_plot(clustered_h5ad, channel.value('cluster_res1'), channel.value(['1', '3'])) | view   
+    visualization(clustered_h5ad, channel.value('origine'))
+    heatmap(clustered_h5ad, channel.value('cluster_res1'), channel.value('4')) // = nb genes
+    volcano_plot(clustered_h5ad, channel.value('cluster_res1'), channel.value(['0', '4']), '10')  
 }
