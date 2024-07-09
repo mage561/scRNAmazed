@@ -80,3 +80,22 @@ process volcano_plot {
     """
 
 }
+
+process enrichment {
+    conda "$params.conda_envs/enrichment_env"
+
+    input:
+    path h5ad_file
+    val metadata //needs to be categorical, or we'll have to do ranges of numerics as categories
+    tuple val(class1), val(class2)
+    val nb_genes
+
+    output:
+    stdout
+
+    script:
+    """
+    python3 $params.py_script/enrichment.py "$h5ad_file" "$metadata" "$class1" "$class2" "$nb_genes" "$params.outdir"
+    """
+
+}
