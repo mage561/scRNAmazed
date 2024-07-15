@@ -8,3 +8,4 @@ dependencies:
   - matplotlib=3.8.4
   - decoupler-py=1.7.0
   - numpy=1.23.5
+  - gseapy=1.1.3

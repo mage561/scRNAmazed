@@ -99,3 +99,22 @@ process enrichment {
     """
 
 }
+
+process gsea {
+    conda "$params.conda_envs/enrichment_env"
+
+    input:
+    path h5ad_file
+    val metadata 
+    tuple val(class1), val(class2) //compare the first to the second
+    val gmt_file
+
+    output:
+    stdout
+
+    script:
+    """
+    python3 $params.py_script/gsea.py "$h5ad_file" "$metadata" "$class1" "$class2" "$params.geneset$gmt_file" "$params.outdir"
+    """
+
+}

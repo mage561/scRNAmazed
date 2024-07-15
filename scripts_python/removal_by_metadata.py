@@ -10,4 +10,4 @@ groups = list(map(str, ast.literal_eval(sys.argv[3])))
 
 adata = adata[~adata.obs[metadata].isin(groups)]
 
-adata.write_h5ad("filtered.h5ad")
+adata.write_h5ad("removed_cell_by_metadata.h5ad")

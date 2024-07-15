@@ -30,7 +30,7 @@ minus_log10_pvals = -numpy.log10(adata.uns['rank_genes_groups']['pvals_adj'][gro
 logfoldchanges = adata.uns['rank_genes_groups']['logfoldchanges'][group1]
 
 dataframe = pandas.DataFrame({'-log10pval': minus_log10_pvals, 'logfoldchanges': logfoldchanges, 'gene': adata.uns['rank_genes_groups']['names'][group1], 'score': adata.uns['rank_genes_groups']['scores'][group1]})
-significant = (dataframe['-log10pval'] > -numpy.log10(0.01)) & (abs(dataframe['logfoldchanges']) > 1.5)
+significant = (dataframe['-log10pval'] > -numpy.log10(0.05)) & (abs(dataframe['logfoldchanges']) > 1.5)
 
 top_genes = dataframe[significant].sort_values(by=['score','-log10pval','logfoldchanges'], key=lambda v: abs(v), ascending=[False, False, False])
 
