@@ -17,8 +17,11 @@ workflow{
     gm(clustered_h5ad) | view
 
     visualization(clustered_h5ad, channel.value('origine'))
+
     heatmap(clustered_h5ad, channel.value('cluster_res1'), channel.value('3')) // = nb genes
+
     volcano_plot(clustered_h5ad, channel.value('cluster_res1'), channel.value(['0', '4']), '10')  
+
     enrichment(clustered_h5ad, channel.value('cluster_res1'), channel.value(['0', '4']), '10') | view //put 'rest' on the second of .value to compare to all the others
 
     //Alteration
@@ -27,7 +30,8 @@ workflow{
     gm2(altered_h5ad2) | view
 
     //Analysis 2
-    gsea(altered_h5ad2, channel.value('CD43'), channel.value(['CD43+', 'CD43-']), channel.value('trm_geneset.gmt')) | view
+    
+    gsea(altered_h5ad2, channel.value('CD43'), channel.value(['CD43+', 'CD43-']), channel.value('trm3.gmt')) | view
 
 
 }
