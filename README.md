@@ -16,7 +16,9 @@ The goal of this pipeline is to allow biologist to easily analyze and plot their
     ```shell
     conda env create --yes -f CONDA_ENVS/r_env.yml --prefix CONDA_ENVS/r_env/
     conda env create --yes -f CONDA_ENVS/py_env.yml --prefix CONDA_ENVS/py_env/
+    conda env create --yes -f CONDA_ENVS/enrichment_env.yml --prefix CONDA_ENVS/enrichment_env/
     ```
+    (If the installing takes forever, you can run it without the prefix and then create a symbolic link to the env repository where the prefix was supposed to be)
 6. run `nextflow run main.nf` from the WSL2 shell
 ### On Linux
 Idk, I work on windows, will add this if I have time

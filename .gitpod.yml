@@ -20,6 +20,7 @@ tasks:
             conda env config vars set my_var="`conda info --base`/envs"
             conda env create --yes -f CONDA_ENVS/py_env.yml
             conda env create --yes -f CONDA_ENVS/r_env.yml
+            conda env create --yes -f CONDA_ENVS/enrichment_env.yml
 
       command: exit      
     - name: Main Terminal
