@@ -12,8 +12,9 @@ metadata = sys.argv[2]
 group1 = sys.argv[3] #how is group1 differentially expressed regarding group2
 group2 = sys.argv[4]
 gmt_file = sys.argv[5]
-output_dir = sys.argv[6]+"/analysis_plots/enrichment"
+output_dir = sys.argv[6]+"analysis_plots/enrichment"
 
+os.makedirs(output_dir, exist_ok=True)
 
 scanpy.pp.highly_variable_genes(adata, n_top_genes=4000)#, layer="counts"
 scanpy.tl.rank_genes_groups(adata, metadata, reference=group2, method="t-test", key_added="t-test")#on compare tt au grp dans reference
@@ -25,4 +26,4 @@ t_stats.index = t_stats.index.str.upper()
 results = gp.prerank(rnk=t_stats, gene_sets=gmt_file, permutation_num=100)
 
 terms = results.res2d.Term
-gseaplot(rank_metric=results.ranking, term=terms[0], ofname=f'{output_dir}/gsea_{group1}(_relative_to_{group2}).pdf', **results.results[terms[0]])
+gseaplot(rank_metric=results.ranking, term=terms[0], ofname=f'{output_dir}/gsea_{os.path.splitext(os.path.basename(gmt_file))[0]}_{group1}_vs_{group2}.pdf', **results.results[terms[0]])

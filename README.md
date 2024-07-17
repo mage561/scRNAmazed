@@ -2,8 +2,8 @@
 The goal of this pipeline is to allow biologist to easily analyze and plot their scRNAseq data
 # How to Run this:
 ## The gitpod way
-1. go to gitpod.io
-2. in the *new workspace* field, paste `https://github.com/mage561/test_gitpod`
+1. go to gitpod.io (> try for free > connect with whatever)
+2. Click *new workspace*, then paste `https://github.com/mage561/scRNAmazed`
 3. (wait for the setup to be done) run `nextflow run main.nf`
 
 ## The local way

@@ -18,12 +18,14 @@ tasks:
             gp sync-done conda
             source ~/.bashrc
             conda env create --yes -f CONDA_ENVS/py_env.yml
+            gp sync-done conda_env_1
             conda env create --yes -f CONDA_ENVS/r_env.yml
+            gp sync-done conda_env_2
             conda env create --yes -f CONDA_ENVS/enrichment_env.yml
+            gp sync-done conda_env_3
             ln -s "`conda info --base`/envs/py_env" CONDA_ENVS/
             ln -s "`conda info --base`/envs/r_env" CONDA_ENVS/
             ln -s "`conda info --base`/envs/enrichment_env" CONDA_ENVS/
-            gp sync-done env
 
       command: exit      
     - name: Main Terminal
@@ -33,7 +35,12 @@ tasks:
             echo "Downloading Conda..."
             gp sync-await conda
             echo "Downloading Environments... (this may take a while)"
-            gp sync-await env
+            gp sync-await conda_env_1
+            echo "1/3 env downloaded"
+            gp sync-await conda_env_2
+            echo "2/3 env downloaded"
+            gp sync-await conda_env_3
+            echo "3/3 env downloaded"
             source ~/.bashrc
             echo "All done, you can now run the following line and enjoy the pipeline:"
             echo "nextflow run main.nf"
