@@ -12,7 +12,7 @@ The goal of this pipeline is to allow biologist to easily analyze and plot their
 1. [install wsl](https://learn.microsoft.com/en-us/windows/wsl/install)
 2. [install conda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/windows.html)
 3. [install nextflow](https://www.nextflow.io/docs/latest/install.html) on your wsl subsystem
-4. In WSL2, Clone the following repository: `https://github.com/mage561/test_gitpod`, get in and run the following line:
+4. In WSL2, Clone the following repository: `https://github.com/mage561/scRNAmazed`, get in and run the following line:
     ```shell
     conda env create --yes -f CONDA_ENVS/r_env.yml --prefix CONDA_ENVS/r_env/
     conda env create --yes -f CONDA_ENVS/py_env.yml --prefix CONDA_ENVS/py_env/
@@ -21,7 +21,7 @@ The goal of this pipeline is to allow biologist to easily analyze and plot their
     (If the installing takes forever, you can run it without the prefix and then create a symbolic link to the env repository where the prefix was supposed to be)
 6. run `nextflow run main.nf` from the WSL2 shell
 ### On Linux
-Idk, I work on windows, will add this if I have time
+Idk, I work on windows, will add this if I have time, you probably do the same as windows while skipping the wsl part
 
 ## Input Data:
 A directory for each sample containing the matrix.mtx, genes.tsv (or features.tsv), and barcodes.tsv (all .gz) files provided by 10X (filteredCountTable Directory, \[non-corrected?\])

@@ -10,4 +10,3 @@ dependencies:
   - scipy=1.7.3
   - leidenalg=0.9.0
   - adjusttext=1.2.0
-  - gseapy=1.0.4

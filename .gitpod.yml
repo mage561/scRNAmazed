@@ -17,10 +17,13 @@ tasks:
             ~/miniconda3/bin/conda init zsh
             gp sync-done conda
             source ~/.bashrc
-            conda env config vars set my_var="`conda info --base`/envs"
             conda env create --yes -f CONDA_ENVS/py_env.yml
             conda env create --yes -f CONDA_ENVS/r_env.yml
             conda env create --yes -f CONDA_ENVS/enrichment_env.yml
+            ln -s "`conda info --base`/envs/py_env" CONDA_ENVS/
+            ln -s "`conda info --base`/envs/r_env" CONDA_ENVS/
+            ln -s "`conda info --base`/envs/enrichment_env" CONDA_ENVS/
+            gp sync-done env
 
       command: exit      
     - name: Main Terminal
@@ -29,9 +32,9 @@ tasks:
             echo "Please wait until the other terminal are done with the setup of the environment"
             echo "Downloading Conda..."
             gp sync-await conda
-            echo "Downloading Environments..."
+            echo "Downloading Environments... (this may take a while)"
             gp sync-await env
-            echo "All done, you can now open a new terminal and run the following lines:"
-            echo "source setup.py"
+            source ~/.bashrc
+            echo "All done, you can now run the following line and enjoy the pipeline:"
             echo "nextflow run main.nf"
             
