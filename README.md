@@ -4,7 +4,9 @@ The goal of this pipeline is to allow biologist to easily analyze and plot their
 ## The gitpod way
 1. go to gitpod.io (> try for free > connect with whatever)
 2. Click *new workspace*, then paste `https://github.com/mage561/scRNAmazed`
-3. (wait for the setup to be done) run `nextflow run main.nf`
+3. (wait for the setup to be done)
+4. Upload your data (more on this [here](#input-data))
+5. run `nextflow run main.nf`
 
 ## The local way
 ### On windows
@@ -21,8 +23,13 @@ The goal of this pipeline is to allow biologist to easily analyze and plot their
     (If the installing takes forever, you can run it without the prefix and then create a symbolic link to the env repository where the prefix was supposed to be)
 6. run `nextflow run main.nf` from the WSL2 shell
 ### On Linux
-Idk, I work on windows, will add this if I have time, you probably do the same as windows while skipping the wsl part
+Idk, I work on windows, you probably do the same as windows while skipping the wsl installing part
 
 ## Input Data:
-A directory for each sample containing the matrix.mtx, genes.tsv (or features.tsv), and barcodes.tsv (all .gz) files provided by 10X (filteredCountTable Directory, \[non-corrected?\])
-According to the article i'm following, you better use the filtered_count_table+poisson-corrected as input, tho we will need the unfiltered non-poisson later
+The inside of the data folder need to follow the arborescence below.
+You can change the names of the gray files and folder to match your sample or geneset name.
+An example of a working data folder is the example_data, you can run the pipeline on it using 
+```shell
+nextflow run main.nf --data_repo example_data
+```
+### From Single Cell Discovery

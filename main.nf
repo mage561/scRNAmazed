@@ -31,7 +31,7 @@ workflow{
 
     //Analysis 2
     
-    gsea(altered_h5ad2, channel.value('CD43'), channel.value(['CD43+', 'CD43-']), channel.value('trm3.gmt')) | view
+    gsea(altered_h5ad2, channel.value('CD43'), channel.value(['CD43+', 'CD43+']), channel.value('trm3.gmt')) | view
 
 
 }
