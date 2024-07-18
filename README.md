@@ -31,6 +31,6 @@ The inside of the data folder need to follow the arborescence below.
 You can change the names of the gray files and folder to match your sample or geneset name.
 An example of a working data folder is the example_data, you can run the pipeline on it using 
 ```shell
-nextflow run main.nf --data_repo example_data
+nextflow run main.nf --data_repo `realpath example_data/` 
 ```
 ### From Single Cell Discovery
