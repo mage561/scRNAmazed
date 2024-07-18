@@ -35,8 +35,8 @@ An example of a working data folder is the example_data, you can run the pipelin
 nextflow run main.nf --data_repo `realpath example_data/` 
 ```
 #### Input data from Single Cell Discovery
-Put in data/filtered: root/filtered_count_tables/poisson_corrected/*<br />
-Put in data/raw: root/raw_count_tables/non_poisson_corrected/*<br />
+Put in data/filtered: root/filtered_count_tables/poisson_corrected/\*<br />
+Put in data/raw: root/raw_count_tables/non_poisson_corrected/\*<br />
 Then zip all your barcode, feature and matrix files (ex: gzip sample1/*)<br />
 If you wanna run GSEA, you will need a geneset on which to check for enrichment, please format it using the GMT file format<br />
 You can check for example in the example_data repository<br />
