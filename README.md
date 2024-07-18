@@ -43,7 +43,7 @@ Below, i'll explain what each process in *main.nf* does:
 You can also use the following processes to remove cells or add metadata
 - remove_cells: removes the groups 'X' and 'Y' in the metadata of your choosing
 - add_metadata: pick a metadata and arrange its group togeter, then name your new metadata and new groups that will be a concatenation of you old metadata
-
+Please note that if you need to re-run the pipeline, using -resume allows you not to re-run the already computed processes
 
 ## Input Data:
 The inside of the data folder need to follow the arborescence below.
