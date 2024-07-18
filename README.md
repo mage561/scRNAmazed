@@ -32,7 +32,7 @@ Let it run once until the get_metadata line, then uncomment the lines you need a
 ```shell
 nextflow run main.nf -resume
 ```
-Below, i'll explain what each process does:
+Below, i'll explain what each process in *main.nf* does:
 - visualization: plot a tsne, a umap and a pca of your data coloring the cells according to a metadata ('origine' pour les samples d'ou vienne chaque cellule par exemple)
 - heatmap: plot a heatmap of the Nth most differientially expressed genes between the clusters of the metadata you chose
 - volcano_plot: plot a volcanoplot of the differentially expressed genes of the groups 'X' and 'Y' in the metadata of your choosing, the last number is the amount of names you want on the plot
