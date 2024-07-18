@@ -24,7 +24,7 @@ The goal of this pipeline is to allow biologist to easily analyze and plot their
 5. Upload your data in the data folder (how to format it [here](#input-data))
 6. run `nextflow run main.nf` from the WSL2 shell
 #### On Linux
-Idk, I work on windows, you probably do the same as windows while skipping the wsl installing part
+Idk, I work on windows, you probably do the same as depicted in the windows header while skipping the wsl installing part
 
 # How to use the pipeline:
 You need to edit main.nf to compel the behavior you want <br />
