@@ -5,7 +5,7 @@ The goal of this pipeline is to allow biologist to easily analyze and plot their
 1. go to gitpod.io (> try for free > connect with whatever)
 2. Click *new workspace*, then paste `https://github.com/mage561/scRNAmazed`
 3. (wait for the setup to be done)
-4. Upload your data (more on this [here](#input-data))
+4. Upload your data in the data folder (how to format it [here](#input-data))
 5. run `nextflow run main.nf`
 
 ## The local way
@@ -21,6 +21,7 @@ The goal of this pipeline is to allow biologist to easily analyze and plot their
     conda env create --yes -f CONDA_ENVS/enrichment_env.yml --prefix CONDA_ENVS/enrichment_env/
     ```
     (If the installing takes forever, you can run it without the prefix and then create a symbolic link to the env repository where the prefix was supposed to be)
+5. Upload your data in the data folder (how to format it [here](#input-data))
 6. run `nextflow run main.nf` from the WSL2 shell
 ### On Linux
 Idk, I work on windows, you probably do the same as windows while skipping the wsl installing part
