@@ -35,13 +35,13 @@ An example of a working data folder is the example_data, you can run the pipelin
 nextflow run main.nf --data_repo `realpath example_data/` 
 ```
 #### Input data from Single Cell Discovery
-Put in data/filtered: root/filtered_count_tables/poisson_corrected/*
-Put in data/raw: root/raw_count_tables/non_poisson_corrected/*
-Then zip all your barcode, feature and matrix files (ex: gzip sample1/*)
-If you wanna run GSEA, you will need a geneset on which to check for enrichment, please format it using the GMT file format
-You can check for example in the example_data repository
+Put in data/filtered: root/filtered_count_tables/poisson_corrected/*<br />
+Put in data/raw: root/raw_count_tables/non_poisson_corrected/*<br />
+Then zip all your barcode, feature and matrix files (ex: gzip sample1/*)<br />
+If you wanna run GSEA, you will need a geneset on which to check for enrichment, please format it using the GMT file format<br />
+You can check for example in the example_data repository<br />
 
 #### Other types of input data
-Put your filtered and quality controlled samples in the filtered repository
-Put your raw datas in the raw repository
-If you want to run GSEA, put your .GMT genesets on the geneset repository 
+Put your filtered and quality controlled samples in the filtered repository<br />
+Put your raw datas in the raw repository<br />
+If you want to run GSEA, put your .GMT genesets on the geneset repository <br />
