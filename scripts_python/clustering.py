@@ -14,6 +14,6 @@ scanpy.settings.figdir = output_dir
 #scanpy.tl.umap(adata)
 #scanpy.tl.leiden(adata, key_added="cluster_res0_25", resolution=0.25)
 #scanpy.tl.leiden(adata, key_added="cluster_res0_5", resolution=0.5)
-scanpy.tl.leiden(adata, key_added="cluster_res1", resolution=1.0)
+scanpy.tl.leiden(adata, key_added="clustering", resolution=1.0)
 
 adata.write_h5ad("clustered.h5ad")
