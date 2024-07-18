@@ -27,7 +27,7 @@ Idk, I work on windows, you probably do the same as windows while skipping the w
 
 ## Input Data:
 The inside of the data folder need to follow the arborescence below.
-![Arborescence du dosser data](https://drive.google.com/file/d/1DLRRol5iM1oXHbFY02f8u14Z0bLYpTdb/view)
+![Arborescence du dosser data](https://drive.google.com/uc?export=download&id=1DLRRol5iM1oXHbFY02f8u14Z0bLYpTdb)
 You can change the names of the gray files and folder to match your sample or geneset name.
 An example of a working data folder is the example_data, you can run the pipeline on it using 
 ```shell
