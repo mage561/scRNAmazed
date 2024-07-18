@@ -33,15 +33,15 @@ Let it run once until the get_metadata line, then uncomment the lines you need a
 nextflow run main.nf -resume
 ```
 Below, i'll explain what each process does:
--visualization: plot a tsne, a umap and a pca of your data coloring the cells according to a metadata ('origine' pour les samples d'ou vienne chaque cellule par exemple)
--heatmap: plot a heatmap of the Nth most differientially expressed genes between the clusters of the metadata you chose
--volcano_plot: plot a volcanoplot of the differentially expressed genes of the groups 'X' and 'Y' in the metadata of your choosing, the last number is the amount of names you want on the plot
--enrichment: output an excels of the most relevant pathways regarding the difference of expression between the groups 'X' and 'Y' in the metadata of your choosing
--gsea: plot a gseaplot of the differentially expressed genes between the groups 'X' and 'Y' in the metadata of your choosing relative to the geneset you inputted
+- visualization: plot a tsne, a umap and a pca of your data coloring the cells according to a metadata ('origine' pour les samples d'ou vienne chaque cellule par exemple)
+- heatmap: plot a heatmap of the Nth most differientially expressed genes between the clusters of the metadata you chose
+- volcano_plot: plot a volcanoplot of the differentially expressed genes of the groups 'X' and 'Y' in the metadata of your choosing, the last number is the amount of names you want on the plot
+- enrichment: output an excels of the most relevant pathways regarding the difference of expression between the groups 'X' and 'Y' in the metadata of your choosing
+- gsea: plot a gseaplot of the differentially expressed genes between the groups 'X' and 'Y' in the metadata of your choosing relative to the geneset you inputted
 (please note that all DE plot also output a csv with the complete list of differentially expressed genes and their pvalue, LFC...)<br />
 You can also use the following processes to remove cells or add metadata
--remove_cells: removes the groups 'X' and 'Y' in the metadata of your choosing
--add_metadata: pick a metadata and arrange its group togeter, then name your new metadata and new groups that will be a concatenation of you old metadata
+- remove_cells: removes the groups 'X' and 'Y' in the metadata of your choosing
+- add_metadata: pick a metadata and arrange its group togeter, then name your new metadata and new groups that will be a concatenation of you old metadata
 
 
 ## Input Data:
