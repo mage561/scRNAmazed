@@ -28,7 +28,7 @@ Idk, I work on windows, you probably do the same as depicted in the windows head
 
 # How to use the pipeline:
 You need to edit main.nf to compel the behavior you want <br />
-Let it run once until the get_metadata line, the you will be able to see what metadata is available<br />
+Let it run once until the get_metadata line, you will then be able to see what metadata is available<br />
 Once you are ready, uncomment/edit the lines you need and run 
 ```shell
 nextflow run main.nf -resume
