@@ -43,5 +43,5 @@ tasks:
             echo "3/3 env downloaded"
             source ~/.bashrc
             echo "All done, you can now run the following line and enjoy the pipeline:"
-            echo "nextflow run main.nf"
+            echo "nextflow run main.nf --data_repo `realpath example_data/"
             
