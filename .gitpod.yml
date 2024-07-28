@@ -44,4 +44,4 @@ tasks:
             source ~/.bashrc
             echo "All done, you can now run the following line and enjoy the pipeline:"
             echo "nextflow run main.nf --data_repo `realpath example_data/"
-            
+      command: exit            
